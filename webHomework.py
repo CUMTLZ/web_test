@@ -1,5 +1,6 @@
 import pytest
 import operator
+#判断属于哪一个牌型
 def istonghuashun(list1, list2):
     list1 = sorted(list1)
     if list1[0]+1 == list1[1] and list1[1]+1 == list1[2] and list1[2]+1 == list1[3] and list1[3]+1 ==list1[4] and  list2[0]==list2[1] and list2[1] == list2[2] and list2[2] ==list2[3] and list2[3]==list2[4]:
@@ -46,7 +47,7 @@ def isduizi(list1, list2):
     if list1[0]==list1[1] or list1[1]==list1[2] or list1[2]==list1[3] or list1[3]==list1[4]:
         return True
     return False
-
+#同一种牌型之间的大小比较
 def bijiaotiezhi(list1, list2):
     if list1[0]==list1[1]:
         a =list1[4]
@@ -226,7 +227,7 @@ def bijiaosanpai(list1,list2):
         return "white win"
     else:
         return "Tie"
-
+#将TQJKA转换为对应的数字，-->10,11,12,13,14
 def zhuanhuan(s):
     int1 = s.split(" ", -1)[0][0]
     char1 = s.split(" ", -1)[0][1]
@@ -253,7 +254,7 @@ def zhuanhuan(s):
             list[k] = 14
     list = [int(list[0]),int(list[1]),int(list[2]),int(list[3]),int(list[4])]
     return list, list2
-
+#比较两个牌型的大小
 def bijiao(result1, result2,list_black,list_white):
     dict = {"sanpai":1, "duizi":2, "liangdui":3, "santiao":4, "shunzi":5, "tonghua":6,"hulu":7,"tiezhi":8,"tonghuashun":9}
     if result1!=result2:
@@ -286,6 +287,7 @@ def bijiao(result1, result2,list_black,list_white):
         return bijiaoduizi(list_black,list_white)
     elif result1==result2=="sanpai":
         return bijiaosanpai(list_black,list_white)
+#测试方法，供测试调用
 def test(black,white):
     list1, list2 = zhuanhuan(black)
     list3, list4 = zhuanhuan(white)
